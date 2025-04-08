@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CounterCard extends StatefulWidget {
-  const CounterCard({super.key});
+class CounterCard extends StatelessWidget {
+  final int counter;
+  final VoidCallback onPressed;
 
-  @override
-  State<CounterCard> createState() => _CounterCardState();
-}
-
-class _CounterCardState extends State<CounterCard> {
-  // State
-  int counter = 0;
+  const CounterCard(
+      {super.key, required this.counter, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +16,7 @@ class _CounterCardState extends State<CounterCard> {
           children: [
             Text('Zähler: $counter'),
             ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  counter++;
-                });
-              },
+              onPressed: onPressed,
               child: const Text('Click Me'),
             ),
           ],
